@@ -10,7 +10,7 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
-      "launchBrowser": true,
+      "workingDirectory": "C:\\Users\\Hakim\\Source\\Repos\\CheeseMVCPersistent\\src\\CheeseMVC",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
