@@ -25,10 +25,11 @@ namespace CheeseMVC.Controllers
             return View(cheeses);
         }
 
-        public IActionResult Add()
+        public IActionResult Add(int id)
         {
+            IList<CheeseCategory> categories = context.Categories.ToList();
             AddCheeseViewModel addCheeseViewModel =
-                new AddCheeseViewModel();
+                new AddCheeseViewModel(context.Categories.ToList());
             return View(addCheeseViewModel);
         }
 

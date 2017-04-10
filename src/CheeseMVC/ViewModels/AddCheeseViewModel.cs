@@ -10,6 +10,7 @@ namespace CheeseMVC.ViewModels
 {
     public class AddCheeseViewModel
     {
+        private List<CheeseCategory> categories;
 
         [Required]
         [Display(Name = "Cheese Name")]
@@ -22,22 +23,34 @@ namespace CheeseMVC.ViewModels
         [Display(Name = "Category")]
         public int CategoryID { get; set; }
 
-        public CheeseCategory Category { get; set; }
+        public List<CheeseCategory> Category { get; set; }
 
         public List<SelectListItem> Categories { get; set; }
 
-        public AddCheeseViewModel()
+        public AddCheeseViewModel() { }
+
+        public AddCheeseViewModel(Cheese cheese, IEnumerable<CheeseCategory> categories )
         {
 
             Categories = new List<SelectListItem>();
 
             // <option value="0">Hard</option>
-            Categories.Add(new SelectListItem
+            foreach(CheeseCategory category in categories)
             {
-                Value = ((int)Category.ID).ToString(),
-                Text = Category.Name
-            });
+                Categories.Add(new SelectListItem
+                {
+                    Value = ((int)CategoryID).ToString(),
+                    Text = Name.ToString()
+                });
+            }
 
+        }
+
+        public AddCheeseViewModel(List<CheeseCategory> list)
+        {
+#pragma warning disable CS1717 // Assignment made to same variable
+            this.categories = categories;
+#pragma warning restore CS1717 // Assignment made to same variable
         }
     }
 }

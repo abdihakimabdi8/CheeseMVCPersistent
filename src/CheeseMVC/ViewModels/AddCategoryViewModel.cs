@@ -17,7 +17,7 @@ namespace CheeseMVC.ViewModels
         [Required(ErrorMessage = "Please provide a cheese catogory")]
         public string Name { get; set; }
 
-        public Cheese Cheeses { get; set; }
+        public List<Cheese> Cheeses { get; set; }
 
     }
 }

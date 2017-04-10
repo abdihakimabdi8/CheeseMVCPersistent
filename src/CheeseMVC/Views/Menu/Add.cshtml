@@ -1,0 +1,11 @@
+﻿@model CheeseMVC.ViewModels.AddMenuViewModel
+<h1>Add Menu</h1>
+<form class="form-group" asp-controller="Menu" asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Name">
+            <input type="text" class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </label>
+    </div>
+    <input type="submit" value="Create Menu"/>
+</form>
