@@ -17,13 +17,13 @@ namespace CheeseMVC.Controllers
 
         public CategoryController(CheeseDbContext dbContext)
         {
-            this.context = dbContext;
+            context = dbContext;
         }
 
         // GET: /<controller>/
         public IActionResult Index()
         {
-            IEnumerable<CheeseCategory> categories = context.Categories.ToList();
+            List<CheeseCategory> categories = context.Categories.ToList();
 
             return View(categories);
         }

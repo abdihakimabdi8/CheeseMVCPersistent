@@ -6,15 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using CheeseMVC.Models;
 using CheeseMVC.ViewModels;
 using Microsoft.EntityFrameworkCore;
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CheeseMVC.Controllers
 {
     public class MenuController : Controller
     {
-        private readonly CheeseDbContext context;
+       private readonly CheeseDbContext context;
 
-        MenuController (CheeseDbContext dbContext)
+       public MenuController (CheeseDbContext dbContext)
         {
             context = dbContext;
         }
@@ -42,7 +43,7 @@ namespace CheeseMVC.Controllers
                 };
                 context.Menus.Add(newMenu);
                 context.SaveChanges();
-                return Redirect("/Menu");
+                return Redirect("/Menu/ViewMenu/" + newMenu.ID);
              }
             return View(addMenuViewModel);
          }
@@ -87,13 +88,13 @@ namespace CheeseMVC.Controllers
                     {
                         CheeseMenu menuItem = new CheeseMenu
                         {
-                            Cheese = context.Cheeses.Single(cm => cm.ID == cheeseID),
+                            Cheese = context.Cheeses.Single(c => c.ID == cheeseID),
                             Menu = context.Menus.Single(cm => cm.ID == menuID)
                         };
                         context.CheeseMenus.Add(menuItem);
                         context.SaveChanges();
                     }
-                    return Redirect(string.Format("/Menu/ViewMenu{ 0}", addMenuItemViewModel));
+                    return Redirect(string.Format("/Menu/ViewMenu{0}", addMenuItemViewModel));
                 }
             return View(addMenuItemViewModel);
         }
