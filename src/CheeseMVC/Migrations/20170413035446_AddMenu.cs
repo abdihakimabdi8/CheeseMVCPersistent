@@ -13,12 +13,7 @@ namespace CheeseMVC.Migrations
                 name: "FK_Cheeses_Categories_CategoryID",
                 table: "Cheeses");
 
-            migrationBuilder.AlterColumn<int>(
-                name: "CategoryID",
-                table: "Cheeses",
-                nullable: false,
-                oldClrType: typeof(int),
-                oldNullable: true);
+           
 
             migrationBuilder.CreateTable(
                 name: "Menus",

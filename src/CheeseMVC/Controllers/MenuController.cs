@@ -75,6 +75,7 @@ namespace CheeseMVC.Controllers
             return View(new AddMenuItemViewModel(menu, cheeses));
      
         }
+        [HttpPost]
         public IActionResult AddItem(AddMenuItemViewModel addMenuItemViewModel)
             {
                 if (ModelState.IsValid)
@@ -94,7 +95,7 @@ namespace CheeseMVC.Controllers
                         context.CheeseMenus.Add(menuItem);
                         context.SaveChanges();
                     }
-                    return Redirect(string.Format("/Menu/ViewMenu{0}", addMenuItemViewModel));
+                    return Redirect(string.Format("/Menu/ViewMenu/{0}", addMenuItemViewModel.MenuID));
                 }
             return View(addMenuItemViewModel);
         }
